@@ -9,11 +9,10 @@ pub fn handle_mouse_click(window: &Window, zygotes: &mut Vec<Zygote>) {
             let grid_y = (mouse_y as usize - TOPBAR_HEIGHT) / GRID_CELL_SIZE;
 
             if grid_x < GRID_WIDTH && grid_y < GRID_HEIGHT {
-                // Check if a zygote already exists at this position
-                let position_occupied = zygotes.iter().any(|z| z.x == grid_x && z.y == grid_y);
-
-                if !position_occupied {
-                    zygotes.push(Zygote::new(grid_x, grid_y));
+                // Find the zygote at this position
+                if let Some(zygote) = zygotes.iter_mut().find(|z| z.x == grid_x && z.y == grid_y) {
+                    // If a zygote exists, set it to alive
+                    zygote.is_alive = true;
                 }
             }
         }
