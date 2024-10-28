@@ -6,9 +6,9 @@ Inspired by the rules of the Game of Life.
 
 # launch
 
-\ bash
+``` bash
 cargo run
-\
+```
 
 # commands
 
